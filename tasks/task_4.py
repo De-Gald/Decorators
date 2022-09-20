@@ -23,18 +23,24 @@ class Decorator4:
         self.trace_count += 1
         start = time()
 
-        try:
-            self.func(*args, **kwargs)
-        except Exception as e:
-            logging.error(repr(e))
-
         self.total_time = time() - start
         Decorator4.execution_dict[f'{self.func.__name__}_{self.trace_count}'] = self.total_time
 
         with open('decorator_output.txt', 'a') as f:
             with redirect_stdout(f):
                 print(f'Function "{self.func.__name__}" was executed {self.trace_count} times in {self.total_time}')
-                print(f'Source code of the function "{self.func.__name__}":\n{inspect.getsource(self.func)}')
+                print(f'Name:\t{self.func.__name__} ')
+                print(f'Type:\t{type(self.func)} ')
+                print(f'Sign:\t{inspect.signature(self.func)} ')
+                print(f'Args:\tpositional: {args}, keywords: {kwargs}')
+                print(f'Doc:\n{inspect.getdoc(self.func)}')
+                print(f'Source:\n{inspect.getsource(self.func)} ')
+                print('Output:')
+                try:
+                    self.func(*args, **kwargs)
+                except Exception as e:
+                    logging.error(repr(e))
+                print()
 
 
 def decorator_4(func: Callable) -> Callable:
@@ -45,11 +51,6 @@ def decorator_4(func: Callable) -> Callable:
         trace_count += 1
         start = time()
 
-        try:
-            func(*args, **kwargs)
-        except Exception as e:
-            logging.error(repr(e))
-
         total_time = time() - start
         global execution_dict
         execution_dict[f'{func.__name__}_{trace_count}'] = total_time
@@ -57,6 +58,17 @@ def decorator_4(func: Callable) -> Callable:
         with open('decorator_output.txt', 'a') as f:
             with redirect_stdout(f):
                 print(f'Function "{func.__name__}" was executed {trace_count} times in {total_time}')
-                print(f'Source code of the function "{func.__name__}":\n{inspect.getsource(func)}')
+                print(f'Name:\t{func.__name__} ')
+                print(f'Type:\t{type(func)} ')
+                print(f'Sign:\t{inspect.signature(func)} ')
+                print(f'Args:\tpositional: {args}, keywords: {kwargs}')
+                print(f'Doc:\n{inspect.getdoc(func)}')
+                print(f'Source:\n{inspect.getsource(func)} ')
+                print('Output:')
+                try:
+                    func(*args, **kwargs)
+                except Exception as e:
+                    logging.error(repr(e))
+                print()
 
     return wrapper

@@ -1,3 +1,5 @@
+import contextlib
+import io
 from contextlib import redirect_stdout
 from time import time
 from typing import Callable
@@ -13,14 +15,22 @@ class Decorator3:
 
     def __call__(self, *args, **kwargs) -> None:
         self.trace_count += 1
-
         start = time()
-        self.func(*args, **kwargs)
-        self.total_time = time() - start
 
+        self.f = io.StringIO()
+        with contextlib.redirect_stdout(self.f):
+            self.func(*args, **kwargs)
+
+        self.total_time = time() - start
         Decorator3.execution_dict[f'{self.func.__name__}_{self.trace_count}'] = self.total_time
 
         with open('decorator_output.txt', 'a') as f:
             with redirect_stdout(f):
                 print(f'Function "{self.func.__name__}" was executed {self.trace_count} times in {self.total_time}')
-                print(f'Source code of the function "{self.func.__name__}":\n{inspect.getsource(self.func)}')
+                print(f'Name:\t{self.func.__name__} ')
+                print(f'Type:\t{type(self.func)} ')
+                print(f'Sign:\t{inspect.signature(self.func)} ')
+                print(f'Args:\tpositional: {args}, keywords: {kwargs}')
+                print(f'Doc:\n{inspect.getdoc(self.func)}')
+                print(f'Source:\n{inspect.getsource(self.func)} ')
+                print(f'Output:\n{self.f.getvalue()}')

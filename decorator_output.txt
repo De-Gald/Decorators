@@ -1,5 +1,12 @@
-Function "print_pascal_triangle" was executed 1 times in 0.00010085105895996094
-Source code of the function "print_pascal_triangle":
+Function "print_pascal_triangle" was executed 1 times in 9.5367431640625e-07
+Name:	print_pascal_triangle 
+Type:	<class 'function'> 
+Sign:	(n: int) -> None 
+Args:	positional: (3,), keywords: {}
+Doc:
+Calculating pascal triangle
+:param n: size of a pascal triangle
+Source:
 @Decorator4
 def print_pascal_triangle(n: int) -> None:
     """
@@ -14,9 +21,23 @@ def print_pascal_triangle(n: int) -> None:
     pascal_triangle = list(map(lambda row: list(filter(lambda el: el != 0, row)), np.delete(matrix, 0, 1).astype(int)))
 
     [print(*row) for row in pascal_triangle]
+ 
+Output:
+1
+1 1
+1 2 1
 
-Function "solve_quadratic_equation" was executed 1 times in 2.288818359375e-05
-Source code of the function "solve_quadratic_equation":
+Function "solve_quadratic_equation" was executed 1 times in 0.0
+Name:	solve_quadratic_equation 
+Type:	<class 'function'> 
+Sign:	(a: float, b: float, c: float) -> None 
+Args:	positional: (1, 5, 4), keywords: {}
+Doc:
+Solving quadratic equation ax^2 + bx + c given a, b, c params
+:param a: coefficient before x^2
+:param b: coefficient before x
+:param c: free coefficient
+Source:
 @Decorator4
 def solve_quadratic_equation(a: float, b: float, c: float) -> None:
     """
@@ -36,9 +57,19 @@ def solve_quadratic_equation(a: float, b: float, c: float) -> None:
         lambda sqrt_of_discriminant_with_sign: (-b + sqrt_of_discriminant_with_sign) / (2 * a),
         [sqrt_of_discriminant, -sqrt_of_discriminant]
     )))
+ 
+Output:
+Solutions of the 1x^2 + 5x + 4 are:  [-1.0, -4.0]
 
-Function "print_pascal_triangle" was executed 2 times in 0.00013685226440429688
-Source code of the function "print_pascal_triangle":
+Function "print_pascal_triangle" was executed 2 times in 1.1920928955078125e-06
+Name:	print_pascal_triangle 
+Type:	<class 'function'> 
+Sign:	(n: int) -> None 
+Args:	positional: (5,), keywords: {}
+Doc:
+Calculating pascal triangle
+:param n: size of a pascal triangle
+Source:
 @Decorator4
 def print_pascal_triangle(n: int) -> None:
     """
@@ -53,9 +84,25 @@ def print_pascal_triangle(n: int) -> None:
     pascal_triangle = list(map(lambda row: list(filter(lambda el: el != 0, row)), np.delete(matrix, 0, 1).astype(int)))
 
     [print(*row) for row in pascal_triangle]
+ 
+Output:
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
 
-Function "solve_quadratic_equation" was executed 2 times in 0.00013709068298339844
-Source code of the function "solve_quadratic_equation":
+Function "solve_quadratic_equation" was executed 2 times in 0.0
+Name:	solve_quadratic_equation 
+Type:	<class 'function'> 
+Sign:	(a: float, b: float, c: float) -> None 
+Args:	positional: ('', 4, 5), keywords: {}
+Doc:
+Solving quadratic equation ax^2 + bx + c given a, b, c params
+:param a: coefficient before x^2
+:param b: coefficient before x
+:param c: free coefficient
+Source:
 @Decorator4
 def solve_quadratic_equation(a: float, b: float, c: float) -> None:
     """
@@ -75,4 +122,6 @@ def solve_quadratic_equation(a: float, b: float, c: float) -> None:
         lambda sqrt_of_discriminant_with_sign: (-b + sqrt_of_discriminant_with_sign) / (2 * a),
         [sqrt_of_discriminant, -sqrt_of_discriminant]
     )))
+ 
+Output:
 
