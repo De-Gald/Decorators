@@ -3,6 +3,8 @@ from typing import Callable
 
 
 def decorator_1(func: Callable) -> Callable:
+    """Measures the execution time of a function
+    :param func: Arbitrary Function"""
     trace_count = 0
 
     def wrapper(*args, **kwargs) -> None:

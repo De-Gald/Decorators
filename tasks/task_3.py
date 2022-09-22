@@ -7,6 +7,10 @@ import inspect
 
 
 class Decorator3:
+    """This is a decorator class which will show the execution time of the
+    functions which are decorated by this class and rank the functions
+    based on the execution time and also dumps the output of each function
+    to decorator_output.txt file"""
     execution_dict = {}
 
     def __init__(self, func: Callable) -> None:
