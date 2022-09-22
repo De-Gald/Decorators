@@ -13,6 +13,10 @@ execution_dict = {}
 
 
 class Decorator4:
+    """This is a decorator class which will show the execution time of the
+    functions which are decorated by this class and rank the functions
+    based on the execution time and also dumps the output of each function
+    to decorator_output.txt file"""
     execution_dict = {}
 
     def __init__(self, func: Callable) -> None:
@@ -44,6 +48,11 @@ class Decorator4:
 
 
 def decorator_4(func: Callable) -> Callable:
+    """This is a Decorator function 4 using a function which executes the function "func"
+    and then writes down the functions name, type, sign,
+    Args, Doc, Source, Output
+    :param func: It is a Function which is decorated with this decorator_4 function
+    """
     trace_count = 0
 
     def wrapper(*args, **kwargs):
