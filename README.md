@@ -1,1 +1,1 @@
-# Assignment 1: Decorators in Action
+# Project for Decorators practice
